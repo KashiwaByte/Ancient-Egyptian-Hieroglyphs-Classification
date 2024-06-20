@@ -1,0 +1,8 @@
+.idea
+.pytest*
+data
+results
+outputs
+prepared_data
+*.pyc
+*~
