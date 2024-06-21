@@ -74,10 +74,13 @@ def test(model: nn.Module, test_loader: DataLoader, loss_function: nn.Module, de
 
             # getting y_true
             target = target.to(device)
-
+            
             # getting y_pred
             output = model(data.to(device))
+            # print(output)
             pred = softmax2predictions(output)
+            print(pred)
+            # print(target.view_as(pred))
 
             # accumulating loss and accuracy
             test_loss += loss_function(output, target).sum().item()
@@ -166,7 +169,7 @@ def main(cfg):
         Acc = test(model, train_loader, loss_function, device)
         if Acc> MAX_Accuracy:
             MAX_Accuracy=Acc
-            torch.save(model.state_dict(), 'C:/Users/94427/kashiwa/glyphnet-pytorch/checkpoint/best_checkpoint.pth')
+            torch.save(model.state_dict(), 'C:/Users/94427/kashiwa/glyphnet-pytorch/checkpoint/1best_checkpoint.pth')
             print("最优权重已更新")
 
 
